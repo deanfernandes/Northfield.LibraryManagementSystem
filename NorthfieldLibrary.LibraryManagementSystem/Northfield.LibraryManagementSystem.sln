@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthfieldLibrary.LibraryManagementSystem", "NorthfieldLibrary.LibraryManagementSystem\NorthfieldLibrary.LibraryManagementSystem.csproj", "{BF984191-084E-4763-8374-4730E882CF6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northfield.LibraryManagementSystem", "NorthfieldLibrary.LibraryManagementSystem\Northfield.LibraryManagementSystem.csproj", "{BF984191-084E-4763-8374-4730E882CF6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
