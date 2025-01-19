@@ -37,7 +37,7 @@
             label3 = new Label();
             txtIsbn = new TextBox();
             label2 = new Label();
-            label1 = new Label();
+            lblHeader = new Label();
             lblReturnDate = new Label();
             footerControl1 = new FooterControl();
             headerControl1 = new HeaderControl();
@@ -47,7 +47,7 @@
             // 
             lstLoans.FormattingEnabled = true;
             lstLoans.ItemHeight = 18;
-            lstLoans.Location = new Point(77, 193);
+            lstLoans.Location = new Point(77, 200);
             lstLoans.Name = "lstLoans";
             lstLoans.Size = new Size(233, 256);
             lstLoans.TabIndex = 28;
@@ -76,7 +76,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(391, 308);
+            label4.Location = new Point(391, 300);
             label4.Name = "label4";
             label4.Size = new Size(95, 18);
             label4.TabIndex = 23;
@@ -84,7 +84,7 @@
             // 
             // txtCardNumber
             // 
-            txtCardNumber.Location = new Point(503, 261);
+            txtCardNumber.Location = new Point(503, 250);
             txtCardNumber.Name = "txtCardNumber";
             txtCardNumber.Size = new Size(200, 26);
             txtCardNumber.TabIndex = 22;
@@ -93,7 +93,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(391, 264);
+            label3.Location = new Point(391, 250);
             label3.Name = "label3";
             label3.Size = new Size(106, 18);
             label3.TabIndex = 21;
@@ -101,7 +101,7 @@
             // 
             // txtIsbn
             // 
-            txtIsbn.Location = new Point(503, 216);
+            txtIsbn.Location = new Point(503, 200);
             txtIsbn.Name = "txtIsbn";
             txtIsbn.Size = new Size(200, 26);
             txtIsbn.TabIndex = 20;
@@ -110,28 +110,28 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(391, 219);
+            label2.Location = new Point(391, 200);
             label2.Name = "label2";
             label2.Size = new Size(48, 18);
             label2.TabIndex = 19;
             label2.Text = "ISBN:";
             // 
-            // label1
+            // lblHeader
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(335, 143);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(84, 29);
-            label1.TabIndex = 18;
-            label1.Text = "Loans";
+            lblHeader.AutoSize = true;
+            lblHeader.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHeader.Location = new Point(0, 150);
+            lblHeader.Margin = new Padding(4, 0, 4, 0);
+            lblHeader.Name = "lblHeader";
+            lblHeader.Size = new Size(84, 29);
+            lblHeader.TabIndex = 18;
+            lblHeader.Text = "Loans";
             // 
             // lblReturnDate
             // 
             lblReturnDate.AutoSize = true;
             lblReturnDate.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblReturnDate.Location = new Point(503, 308);
+            lblReturnDate.Location = new Point(503, 300);
             lblReturnDate.Name = "lblReturnDate";
             lblReturnDate.Size = new Size(60, 18);
             lblReturnDate.TabIndex = 30;
@@ -139,14 +139,14 @@
             // 
             // footerControl1
             // 
-            footerControl1.Location = new Point(-8, 457);
+            footerControl1.Location = new Point(0, 555);
             footerControl1.Name = "footerControl1";
             footerControl1.Size = new Size(800, 50);
             footerControl1.TabIndex = 31;
             // 
             // headerControl1
             // 
-            headerControl1.Location = new Point(-8, -2);
+            headerControl1.Location = new Point(0, 0);
             headerControl1.Name = "headerControl1";
             headerControl1.Size = new Size(800, 150);
             headerControl1.TabIndex = 32;
@@ -155,7 +155,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 506);
+            ClientSize = new Size(784, 606);
             Controls.Add(headerControl1);
             Controls.Add(footerControl1);
             Controls.Add(lblReturnDate);
@@ -167,7 +167,7 @@
             Controls.Add(label3);
             Controls.Add(txtIsbn);
             Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lblHeader);
             Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
@@ -188,7 +188,7 @@
         private Label label3;
         private TextBox txtIsbn;
         private Label label2;
-        private Label label1;
+        private Label lblHeader;
         private Label lblReturnDate;
         private FooterControl footerControl1;
         private HeaderControl headerControl1;

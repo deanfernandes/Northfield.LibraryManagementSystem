@@ -1,4 +1,4 @@
-namespace NorthfieldLibrary.LibraryManagementSystem
+namespace Northfield.LibraryManagementSystem
 {
     internal static class Program
     {
