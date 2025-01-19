@@ -16,5 +16,11 @@
             LoanDate = loanDate;
             ReturnDate = returnDate;
         }
+
+        public Loan(string isbn, string cardNumber)
+        {
+            Isbn = isbn;
+            CardNumber = cardNumber;
+        }
     }
 }
