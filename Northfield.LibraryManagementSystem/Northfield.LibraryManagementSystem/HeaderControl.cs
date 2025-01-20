@@ -20,5 +20,10 @@ namespace Northfield.LibraryManagementSystem
             picLogo.Left = (ClientSize.Width - picLogo.Width) / 2;
             picLogo.Top = (ClientSize.Height - picLogo.Height) / 2;
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
