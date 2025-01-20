@@ -47,6 +47,7 @@
             btnLogout.TabIndex = 6;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // lblHeader
             // 
@@ -68,6 +69,7 @@
             btnMembers.TabIndex = 7;
             btnMembers.Text = "Members";
             btnMembers.UseVisualStyleBackColor = true;
+            btnMembers.Click += btnMembers_Click;
             // 
             // btnBooks
             // 
@@ -78,6 +80,7 @@
             btnBooks.TabIndex = 8;
             btnBooks.Text = "Books";
             btnBooks.UseVisualStyleBackColor = true;
+            btnBooks.Click += btnBooks_Click;
             // 
             // btnLoans
             // 
@@ -88,6 +91,7 @@
             btnLoans.TabIndex = 9;
             btnLoans.Text = "Loans";
             btnLoans.UseVisualStyleBackColor = true;
+            btnLoans.Click += btnLoans_Click;
             // 
             // footer1
             // 
@@ -121,6 +125,7 @@
             Name = "DashboardForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Library Management System";
+            FormClosed += DashboardForm_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
