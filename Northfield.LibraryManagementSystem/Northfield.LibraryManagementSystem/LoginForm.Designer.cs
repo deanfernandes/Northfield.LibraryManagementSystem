@@ -106,7 +106,7 @@
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Library Management System";
-            Load += LoginForm_Load;
+            Activated += LoginForm_Activated;
             ResumeLayout(false);
             PerformLayout();
         }

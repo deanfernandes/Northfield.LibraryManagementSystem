@@ -35,16 +35,14 @@ namespace Northfield.LibraryManagementSystem
                     Hide();
                     new DashboardForm(this).Show();
 
+                    txtUsername.Clear();
+                    txtPassword.Clear();
+
                     return;
                 }
             }
 
             MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            BeginInvoke(() => txtUsername.Focus());
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
@@ -53,6 +51,11 @@ namespace Northfield.LibraryManagementSystem
             {
                 btnLogin_Click(sender, e);
             }
+        }
+
+        private void LoginForm_Activated(object sender, EventArgs e)
+        {
+            Invoke(() => txtUsername.Focus());
         }
     }
 }
