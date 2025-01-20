@@ -70,6 +70,7 @@
             txtPassword.Size = new Size(200, 26);
             txtPassword.TabIndex = 3;
             txtPassword.UseSystemPasswordChar = true;
+            txtPassword.KeyDown += txtPassword_KeyDown;
             // 
             // btnLogin
             // 
@@ -79,6 +80,7 @@
             btnLogin.TabIndex = 4;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // headerControl1
             // 
@@ -104,6 +106,7 @@
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Library Management System";
+            Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

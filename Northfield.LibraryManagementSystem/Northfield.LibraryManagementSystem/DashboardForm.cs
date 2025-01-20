@@ -12,7 +12,7 @@ namespace Northfield.LibraryManagementSystem
 {
     public partial class DashboardForm : Form
     {
-        public DashboardForm()
+        public DashboardForm(LoginForm loginForm)
         {
             InitializeComponent();
 
