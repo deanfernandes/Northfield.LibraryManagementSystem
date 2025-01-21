@@ -58,6 +58,7 @@
             // txtIsbn
             // 
             txtIsbn.Location = new Point(500, 200);
+            txtIsbn.MaxLength = 13;
             txtIsbn.Name = "txtIsbn";
             txtIsbn.Size = new Size(200, 26);
             txtIsbn.TabIndex = 8;
@@ -75,6 +76,7 @@
             // txtTitle
             // 
             txtTitle.Location = new Point(500, 250);
+            txtTitle.MaxLength = 255;
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(200, 26);
             txtTitle.TabIndex = 10;
@@ -92,6 +94,7 @@
             // txtAuthor
             // 
             txtAuthor.Location = new Point(500, 300);
+            txtAuthor.MaxLength = 255;
             txtAuthor.Name = "txtAuthor";
             txtAuthor.Size = new Size(200, 26);
             txtAuthor.TabIndex = 12;
@@ -115,6 +118,7 @@
             btnNew.TabIndex = 13;
             btnNew.Text = "New";
             btnNew.UseVisualStyleBackColor = true;
+            btnNew.Click += btnNew_Click;
             // 
             // btnUpdate
             // 
@@ -125,6 +129,7 @@
             btnUpdate.TabIndex = 14;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnDelete
             // 
@@ -136,6 +141,7 @@
             btnDelete.TabIndex = 15;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // lstBooks
             // 
@@ -145,6 +151,7 @@
             lstBooks.Name = "lstBooks";
             lstBooks.Size = new Size(233, 256);
             lstBooks.TabIndex = 16;
+            lstBooks.SelectedIndexChanged += lstBooks_SelectedIndexChanged;
             // 
             // footerControl1
             // 
