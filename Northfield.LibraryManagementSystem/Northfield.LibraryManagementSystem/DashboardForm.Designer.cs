@@ -44,7 +44,7 @@
             btnLogout.Margin = new Padding(4);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(129, 42);
-            btnLogout.TabIndex = 6;
+            btnLogout.TabIndex = 4;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
@@ -66,7 +66,7 @@
             btnMembers.Margin = new Padding(4);
             btnMembers.Name = "btnMembers";
             btnMembers.Size = new Size(129, 42);
-            btnMembers.TabIndex = 7;
+            btnMembers.TabIndex = 2;
             btnMembers.Text = "Members";
             btnMembers.UseVisualStyleBackColor = true;
             btnMembers.Click += btnMembers_Click;
@@ -77,7 +77,7 @@
             btnBooks.Margin = new Padding(4);
             btnBooks.Name = "btnBooks";
             btnBooks.Size = new Size(129, 42);
-            btnBooks.TabIndex = 8;
+            btnBooks.TabIndex = 1;
             btnBooks.Text = "Books";
             btnBooks.UseVisualStyleBackColor = true;
             btnBooks.Click += btnBooks_Click;
@@ -88,7 +88,7 @@
             btnLoans.Margin = new Padding(4);
             btnLoans.Name = "btnLoans";
             btnLoans.Size = new Size(129, 42);
-            btnLoans.TabIndex = 9;
+            btnLoans.TabIndex = 3;
             btnLoans.Text = "Loans";
             btnLoans.UseVisualStyleBackColor = true;
             btnLoans.Click += btnLoans_Click;

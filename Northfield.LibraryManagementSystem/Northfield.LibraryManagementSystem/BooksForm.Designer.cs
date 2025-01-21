@@ -61,7 +61,7 @@
             txtIsbn.MaxLength = 13;
             txtIsbn.Name = "txtIsbn";
             txtIsbn.Size = new Size(200, 26);
-            txtIsbn.TabIndex = 8;
+            txtIsbn.TabIndex = 1;
             // 
             // label2
             // 
@@ -79,7 +79,7 @@
             txtTitle.MaxLength = 255;
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(200, 26);
-            txtTitle.TabIndex = 10;
+            txtTitle.TabIndex = 2;
             // 
             // label3
             // 
@@ -97,7 +97,7 @@
             txtAuthor.MaxLength = 255;
             txtAuthor.Name = "txtAuthor";
             txtAuthor.Size = new Size(200, 26);
-            txtAuthor.TabIndex = 12;
+            txtAuthor.TabIndex = 3;
             // 
             // label4
             // 
@@ -115,7 +115,7 @@
             btnNew.Margin = new Padding(4);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(129, 42);
-            btnNew.TabIndex = 13;
+            btnNew.TabIndex = 4;
             btnNew.Text = "New";
             btnNew.UseVisualStyleBackColor = true;
             btnNew.Click += btnNew_Click;
@@ -126,7 +126,7 @@
             btnUpdate.Margin = new Padding(4);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(129, 42);
-            btnUpdate.TabIndex = 14;
+            btnUpdate.TabIndex = 5;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
@@ -138,7 +138,7 @@
             btnDelete.Margin = new Padding(4);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(129, 42);
-            btnDelete.TabIndex = 15;
+            btnDelete.TabIndex = 6;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;

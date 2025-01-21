@@ -39,10 +39,10 @@
             txtFirstName = new TextBox();
             label3 = new Label();
             txtCardNumber = new TextBox();
-            label2 = new Label();
+            lblCardNumber = new Label();
             lblHeader = new Label();
-            txtEmail = new TextBox();
-            label5 = new Label();
+            txtEmailAddress = new TextBox();
+            lblEmailAddress = new Label();
             headerControl1 = new HeaderControl();
             SuspendLayout();
             // 
@@ -61,6 +61,7 @@
             lstMembers.Name = "lstMembers";
             lstMembers.Size = new Size(233, 256);
             lstMembers.TabIndex = 28;
+            lstMembers.SelectedIndexChanged += lstMembers_SelectedIndexChanged;
             // 
             // btnDelete
             // 
@@ -69,9 +70,10 @@
             btnDelete.Margin = new Padding(4);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(129, 42);
-            btnDelete.TabIndex = 27;
+            btnDelete.TabIndex = 7;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -79,9 +81,10 @@
             btnUpdate.Margin = new Padding(4);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(129, 42);
-            btnUpdate.TabIndex = 26;
+            btnUpdate.TabIndex = 6;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnNew
             // 
@@ -89,16 +92,18 @@
             btnNew.Margin = new Padding(4);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(129, 42);
-            btnNew.TabIndex = 25;
+            btnNew.TabIndex = 5;
             btnNew.Text = "New";
             btnNew.UseVisualStyleBackColor = true;
+            btnNew.Click += btnNew_Click;
             // 
             // txtLastName
             // 
             txtLastName.Location = new Point(501, 300);
+            txtLastName.MaxLength = 255;
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(200, 26);
-            txtLastName.TabIndex = 24;
+            txtLastName.TabIndex = 3;
             // 
             // label4
             // 
@@ -113,9 +118,10 @@
             // txtFirstName
             // 
             txtFirstName.Location = new Point(501, 250);
+            txtFirstName.MaxLength = 255;
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(200, 26);
-            txtFirstName.TabIndex = 22;
+            txtFirstName.TabIndex = 2;
             // 
             // label3
             // 
@@ -130,19 +136,20 @@
             // txtCardNumber
             // 
             txtCardNumber.Location = new Point(501, 200);
+            txtCardNumber.MaxLength = 255;
             txtCardNumber.Name = "txtCardNumber";
             txtCardNumber.Size = new Size(200, 26);
-            txtCardNumber.TabIndex = 20;
+            txtCardNumber.TabIndex = 1;
             // 
-            // label2
+            // lblCardNumber
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(390, 200);
-            label2.Name = "label2";
-            label2.Size = new Size(106, 18);
-            label2.TabIndex = 19;
-            label2.Text = "Card Number:";
+            lblCardNumber.AutoSize = true;
+            lblCardNumber.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCardNumber.Location = new Point(390, 200);
+            lblCardNumber.Name = "lblCardNumber";
+            lblCardNumber.Size = new Size(68, 18);
+            lblCardNumber.TabIndex = 19;
+            lblCardNumber.Text = "Card №:";
             // 
             // lblHeader
             // 
@@ -155,22 +162,23 @@
             lblHeader.TabIndex = 18;
             lblHeader.Text = "Members";
             // 
-            // txtEmail
+            // txtEmailAddress
             // 
-            txtEmail.Location = new Point(501, 350);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(200, 26);
-            txtEmail.TabIndex = 31;
+            txtEmailAddress.Location = new Point(501, 350);
+            txtEmailAddress.MaxLength = 255;
+            txtEmailAddress.Name = "txtEmailAddress";
+            txtEmailAddress.Size = new Size(200, 26);
+            txtEmailAddress.TabIndex = 4;
             // 
-            // label5
+            // lblEmailAddress
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(390, 350);
-            label5.Name = "label5";
-            label5.Size = new Size(52, 18);
-            label5.TabIndex = 30;
-            label5.Text = "Email:";
+            lblEmailAddress.AutoSize = true;
+            lblEmailAddress.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblEmailAddress.Location = new Point(390, 350);
+            lblEmailAddress.Name = "lblEmailAddress";
+            lblEmailAddress.Size = new Size(52, 18);
+            lblEmailAddress.TabIndex = 30;
+            lblEmailAddress.Text = "Email:";
             // 
             // headerControl1
             // 
@@ -185,8 +193,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 606);
             Controls.Add(headerControl1);
-            Controls.Add(txtEmail);
-            Controls.Add(label5);
+            Controls.Add(txtEmailAddress);
+            Controls.Add(lblEmailAddress);
             Controls.Add(footerControl1);
             Controls.Add(lstMembers);
             Controls.Add(btnDelete);
@@ -197,7 +205,7 @@
             Controls.Add(txtFirstName);
             Controls.Add(label3);
             Controls.Add(txtCardNumber);
-            Controls.Add(label2);
+            Controls.Add(lblCardNumber);
             Controls.Add(lblHeader);
             Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -221,10 +229,10 @@
         private TextBox txtFirstName;
         private Label label3;
         private TextBox txtCardNumber;
-        private Label label2;
+        private Label lblCardNumber;
         private Label lblHeader;
-        private TextBox txtEmail;
-        private Label label5;
+        private TextBox txtEmailAddress;
+        private Label lblEmailAddress;
         private HeaderControl headerControl1;
     }
 }
