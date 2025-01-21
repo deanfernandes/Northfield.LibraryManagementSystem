@@ -8,6 +8,7 @@ namespace Northfield.LibraryManagementSystem
     public partial class BooksForm : Form
     {
         SqlDatabaseService SqlDatabaseService = new SqlDatabaseService(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
+
         public BooksForm()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace Northfield.LibraryManagementSystem
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            if (DataIsValid() == false)
+            if (IsDataValid() == false)
             {
                 return;
             }
@@ -48,7 +49,7 @@ namespace Northfield.LibraryManagementSystem
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (DataIsValid() == false)
+            if (IsDataValid() == false)
             {
                 return;
             }
@@ -68,7 +69,7 @@ namespace Northfield.LibraryManagementSystem
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (DataIsValid() == false)
+            if (IsDataValid() == false)
             {
                 return;
             }
@@ -116,7 +117,7 @@ namespace Northfield.LibraryManagementSystem
             }
         }
 
-        private bool DataIsValid()
+        private bool IsDataValid()
         {
             if (string.IsNullOrEmpty(txtIsbn.Text))
             {

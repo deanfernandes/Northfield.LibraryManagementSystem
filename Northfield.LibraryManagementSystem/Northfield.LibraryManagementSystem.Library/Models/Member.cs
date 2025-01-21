@@ -6,6 +6,13 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
+        public string DisplayMember
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
 
         public Member(string cardNumber, string firstName, string lastName, string emailAddress)
         {

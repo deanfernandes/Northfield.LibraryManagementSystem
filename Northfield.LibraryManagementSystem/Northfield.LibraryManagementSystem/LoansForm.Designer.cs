@@ -58,7 +58,7 @@
             btnReturn.Margin = new Padding(4);
             btnReturn.Name = "btnReturn";
             btnReturn.Size = new Size(129, 42);
-            btnReturn.TabIndex = 26;
+            btnReturn.TabIndex = 4;
             btnReturn.Text = "Return";
             btnReturn.UseVisualStyleBackColor = true;
             // 
@@ -68,7 +68,7 @@
             btnLoan.Margin = new Padding(4);
             btnLoan.Name = "btnLoan";
             btnLoan.Size = new Size(129, 42);
-            btnLoan.TabIndex = 25;
+            btnLoan.TabIndex = 3;
             btnLoan.Text = "Loan";
             btnLoan.UseVisualStyleBackColor = true;
             // 
@@ -87,7 +87,7 @@
             txtCardNumber.Location = new Point(503, 250);
             txtCardNumber.Name = "txtCardNumber";
             txtCardNumber.Size = new Size(200, 26);
-            txtCardNumber.TabIndex = 22;
+            txtCardNumber.TabIndex = 2;
             // 
             // label3
             // 
@@ -104,7 +104,7 @@
             txtIsbn.Location = new Point(503, 200);
             txtIsbn.Name = "txtIsbn";
             txtIsbn.Size = new Size(200, 26);
-            txtIsbn.TabIndex = 20;
+            txtIsbn.TabIndex = 1;
             // 
             // label2
             // 

@@ -60,7 +60,7 @@
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Username";
             txtUsername.Size = new Size(200, 26);
-            txtUsername.TabIndex = 2;
+            txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
@@ -68,7 +68,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Password";
             txtPassword.Size = new Size(200, 26);
-            txtPassword.TabIndex = 3;
+            txtPassword.TabIndex = 2;
             txtPassword.UseSystemPasswordChar = true;
             txtPassword.KeyDown += txtPassword_KeyDown;
             // 
@@ -77,7 +77,7 @@
             btnLogin.Location = new Point(0, 320);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(100, 35);
-            btnLogin.TabIndex = 4;
+            btnLogin.TabIndex = 3;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
