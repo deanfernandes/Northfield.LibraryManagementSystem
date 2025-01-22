@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northfield.LibraryManagemen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northfield.LibraryManagementSystem.Library", "Northfield.LibraryManagementSystem.Library\Northfield.LibraryManagementSystem.Library.csproj", "{52DF4EE0-7373-443B-9DF5-1B8EEDF6F5D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northfield.LibraryManagementSystem.Tests", "Northfield.LibraryManagementSystem.Tests\Northfield.LibraryManagementSystem.Tests.csproj", "{F48FBF25-5BEB-4E54-B223-6120D758F0AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{52DF4EE0-7373-443B-9DF5-1B8EEDF6F5D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52DF4EE0-7373-443B-9DF5-1B8EEDF6F5D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52DF4EE0-7373-443B-9DF5-1B8EEDF6F5D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F48FBF25-5BEB-4E54-B223-6120D758F0AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F48FBF25-5BEB-4E54-B223-6120D758F0AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F48FBF25-5BEB-4E54-B223-6120D758F0AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F48FBF25-5BEB-4E54-B223-6120D758F0AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
