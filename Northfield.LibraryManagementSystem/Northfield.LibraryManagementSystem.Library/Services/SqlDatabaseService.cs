@@ -98,6 +98,24 @@ namespace Northfield.LibraryManagementSystem.Library.Services
             }
         }
 
+        public bool IsBookOnLoan(string isbn)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT * FROM Loan WHERE Isbn = @Isbn AND ReturnDate IS NULL;";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Isbn", isbn);
+
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        return reader.HasRows;
+                    }
+                }
+            }
+        }
+
         public Admin? SelectAdmin(string username)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -150,7 +168,13 @@ namespace Northfield.LibraryManagementSystem.Library.Services
 
             using (var connection = new SqlConnection(_connectionString))
             {
-                const string query = "SELECT LoanId, Isbn, CardNumber, LoanDate, ReturnDate FROM Loan";
+                const string query = @"SELECT Loan.LoanId, Loan.Isbn, Loan.CardNumber, Loan.LoanDate, Loan.ReturnDate, Book.Title AS BookTitle, Member.FirstName, Member.LastName
+                                    FROM Loan
+                                    INNER JOIN 
+                                        Book ON Loan.Isbn = Book.Isbn
+                                    INNER JOIN 
+                                        Member ON Loan.CardNumber = Member.CardNumber;";
+
                 using (var command = new SqlCommand(query, connection))
                 {
                     connection.Open();
@@ -158,7 +182,10 @@ namespace Northfield.LibraryManagementSystem.Library.Services
                     {
                         while (reader.Read())
                         {
-                            loans.Add(new Loan(reader.GetInt32(reader.GetOrdinal("LoanId")), reader["Isbn"].ToString(), reader["CardNumber"].ToString(), reader.GetDateTime(reader.GetOrdinal("LoanDate")), reader.GetDateTime(reader.GetOrdinal("ReturnDate"))));
+                            DateTime? returnDate = reader.IsDBNull(reader.GetOrdinal("ReturnDate"))
+                                                    ? (DateTime?)null
+                                                    : reader.GetDateTime(reader.GetOrdinal("ReturnDate"));
+                            loans.Add(new Loan(reader.GetInt32(reader.GetOrdinal("LoanId")), reader["Isbn"].ToString(), reader["CardNumber"].ToString(), reader.GetDateTime(reader.GetOrdinal("LoanDate")), returnDate, reader["BookTitle"].ToString(), reader["FirstName"].ToString() + " " + reader["LastName"].ToString()));
                         }
                     }
                 }
@@ -188,6 +215,52 @@ namespace Northfield.LibraryManagementSystem.Library.Services
             }
 
             return members;
+        }
+
+        public Book? SelectBookByIsbn(string isbn)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                const string query = "SELECT Isbn, Title, Author FROM Book WHERE Isbn = @Isbn";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Isbn", isbn);
+
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            return new Book(reader["Isbn"].ToString(), reader["Title"].ToString(), reader["Author"].ToString());
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public Member? SelectMemberByCardNumber(string cardNumber)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                const string query = "SELECT CardNumber, FirstName, LastName, EmailAddress FROM Member WHERE CardNumber = @CardNumber";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CardNumber", cardNumber);
+
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            return new Member(reader["CardNumber"].ToString(), reader["FirstName"].ToString(), reader["LastName"].ToString(), reader["EmailAddress"].ToString());
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
 
         public bool UpdateBook(Book book)

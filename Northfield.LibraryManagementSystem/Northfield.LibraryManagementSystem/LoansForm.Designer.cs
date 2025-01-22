@@ -34,7 +34,7 @@
             btnLoan = new Button();
             label4 = new Label();
             txtCardNumber = new TextBox();
-            label3 = new Label();
+            lblCardNumber = new Label();
             txtIsbn = new TextBox();
             label2 = new Label();
             lblHeader = new Label();
@@ -51,9 +51,11 @@
             lstLoans.Name = "lstLoans";
             lstLoans.Size = new Size(233, 256);
             lstLoans.TabIndex = 28;
+            lstLoans.SelectedIndexChanged += lstLoans_SelectedIndexChanged;
             // 
             // btnReturn
             // 
+            btnReturn.Enabled = false;
             btnReturn.Location = new Point(560, 367);
             btnReturn.Margin = new Padding(4);
             btnReturn.Name = "btnReturn";
@@ -61,6 +63,7 @@
             btnReturn.TabIndex = 4;
             btnReturn.Text = "Return";
             btnReturn.UseVisualStyleBackColor = true;
+            btnReturn.Click += btnReturn_Click;
             // 
             // btnLoan
             // 
@@ -71,6 +74,7 @@
             btnLoan.TabIndex = 3;
             btnLoan.Text = "Loan";
             btnLoan.UseVisualStyleBackColor = true;
+            btnLoan.Click += btnLoan_Click;
             // 
             // label4
             // 
@@ -89,19 +93,20 @@
             txtCardNumber.Size = new Size(200, 26);
             txtCardNumber.TabIndex = 2;
             // 
-            // label3
+            // lblCardNumber
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(391, 250);
-            label3.Name = "label3";
-            label3.Size = new Size(106, 18);
-            label3.TabIndex = 21;
-            label3.Text = "Card Number:";
+            lblCardNumber.AutoSize = true;
+            lblCardNumber.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCardNumber.Location = new Point(391, 250);
+            lblCardNumber.Name = "lblCardNumber";
+            lblCardNumber.Size = new Size(68, 18);
+            lblCardNumber.TabIndex = 21;
+            lblCardNumber.Text = "Card №:";
             // 
             // txtIsbn
             // 
             txtIsbn.Location = new Point(503, 200);
+            txtIsbn.MaxLength = 13;
             txtIsbn.Name = "txtIsbn";
             txtIsbn.Size = new Size(200, 26);
             txtIsbn.TabIndex = 1;
@@ -133,9 +138,8 @@
             lblReturnDate.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblReturnDate.Location = new Point(503, 300);
             lblReturnDate.Name = "lblReturnDate";
-            lblReturnDate.Size = new Size(60, 18);
+            lblReturnDate.Size = new Size(0, 18);
             lblReturnDate.TabIndex = 30;
-            lblReturnDate.Text = "<Date>";
             // 
             // footerControl1
             // 
@@ -164,7 +168,7 @@
             Controls.Add(btnLoan);
             Controls.Add(label4);
             Controls.Add(txtCardNumber);
-            Controls.Add(label3);
+            Controls.Add(lblCardNumber);
             Controls.Add(txtIsbn);
             Controls.Add(label2);
             Controls.Add(lblHeader);
@@ -185,7 +189,7 @@
         private Button btnLoan;
         private Label label4;
         private TextBox txtCardNumber;
-        private Label label3;
+        private Label lblCardNumber;
         private TextBox txtIsbn;
         private Label label2;
         private Label lblHeader;
