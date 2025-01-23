@@ -175,8 +175,25 @@ namespace Northfield.LibraryManagementSystem
         private void ResetLstMembers()
         {
             lstMembers.DataSource = SqlDatabaseService.SelectAllMembers();
-            //don't select item
-            lstMembers.SelectedIndex = -1;
+
+            if (lstMembers.Items.Count == 0)
+            {
+                txtCardNumber.Clear();
+                txtFirstName.Clear();
+                txtLastName.Clear();
+                txtEmailAddress.Clear();
+
+                btnNew.Enabled = true;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+
+                txtCardNumber.Enabled = true;
+            }
+            else
+            {
+                //don't select item
+                lstMembers.SelectedIndex = -1;
+            }
         }
     }
 }

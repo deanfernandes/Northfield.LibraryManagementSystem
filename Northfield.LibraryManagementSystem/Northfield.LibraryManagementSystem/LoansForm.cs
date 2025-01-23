@@ -167,8 +167,24 @@ namespace Northfield.LibraryManagementSystem
             var notReturnedLoans = loans.Where(loan => loan.ReturnDate == null).ToList();
             lstLoans.DataSource = notReturnedLoans.ToList();
 
-            //don't select item
-            lstLoans.SelectedIndex = -1;
+            if (lstLoans.Items.Count == 0)
+            {
+                txtIsbn.Clear();
+                txtCardNumber.Clear();
+
+                btnReturn.Enabled = false;
+                btnLoan.Enabled = true;
+
+                txtIsbn.Enabled = true;
+                txtCardNumber.Enabled = true;
+
+                lblReturnDate.Text = string.Empty;
+            }
+            else
+            {
+                //don't select item
+                lstLoans.SelectedIndex = -1;
+            }
         }
     }
 }

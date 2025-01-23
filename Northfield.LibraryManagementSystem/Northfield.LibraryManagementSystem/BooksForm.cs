@@ -151,8 +151,24 @@ namespace Northfield.LibraryManagementSystem
         private void ResetLstBooks()
         {
             lstBooks.DataSource = SqlDatabaseService.SelectAllBooks();
-            //don't select item
-            lstBooks.SelectedIndex = -1;
+
+            if(lstBooks.Items.Count == 0)
+            {
+                txtIsbn.Clear();
+                txtTitle.Clear();
+                txtAuthor.Clear();
+
+                btnNew.Enabled = true;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+
+                txtIsbn.Enabled = true;
+            }
+            else
+            {
+                //don't select item
+                lstBooks.SelectedIndex = -1;
+            }
         }
     }
 }
