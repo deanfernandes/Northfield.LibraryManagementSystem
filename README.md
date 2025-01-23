@@ -7,8 +7,7 @@ MVP Desktop application for local council library. So Libarian can manage member
 **Trello Board:** https://trello.com/b/DFmkp4xz/northfieldlibrarymanagementsystemkanban
 
 ## Screenshots
-![login form](docs/images/screenshots/loginform.png)
-![dashboard](docs/images/screenshots/dashboard.png)
-![books form](docs/images/screenshots/booksform.png)
-![members form](docs/images/screenshots/membersform.png)
-![loans form](docs/images/screenshots/loansform.png)
+![login form and dashboard](docs/images/screenshots/loginform_and_dashboard.gif)
+![books form](docs/images/screenshots/booksform.gif)
+![members form](docs/images/screenshots/membersform.gif)
+![loans form](docs/images/screenshots/loansform.gif)
