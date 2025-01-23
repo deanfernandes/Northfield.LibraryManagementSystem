@@ -103,7 +103,7 @@ namespace Northfield.LibraryManagementSystem
 
             ResetLstLoans();
 
-            MessageBox.Show("Loaned book", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Returned book", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void lstLoans_SelectedIndexChanged(object sender, EventArgs e)
