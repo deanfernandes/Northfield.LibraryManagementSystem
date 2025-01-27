@@ -18,6 +18,26 @@ namespace Northfield.LibraryManagementSystem
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            PerformLogin();
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                PerformLogin();
+
+                e.SuppressKeyPress = true; //prevent "ding" sound
+            }
+        }
+
+        private void LoginForm_Activated(object sender, EventArgs e)
+        {
+            Invoke(() => txtUsername.Focus());
+        }
+
+        private void PerformLogin()
+        {
             if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
             {
                 MessageBox.Show("Empty Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -43,19 +63,6 @@ namespace Northfield.LibraryManagementSystem
             }
 
             MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnLogin_Click(sender, e);
-            }
-        }
-
-        private void LoginForm_Activated(object sender, EventArgs e)
-        {
-            Invoke(() => txtUsername.Focus());
         }
     }
 }
