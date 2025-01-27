@@ -15,7 +15,7 @@ namespace Northfield.LibraryManagementSystem.Library.Services
             }
 
             //salt pw (random salt)
-            byte[] saltBytes = GenerateRandomSalt();
+            byte[] saltBytes = GenerateRandomSaltNew();
 
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
             byte[] passwordSaltBytes = new byte[passwordBytes.Length + saltBytes.Length];
@@ -56,6 +56,7 @@ namespace Northfield.LibraryManagementSystem.Library.Services
             }
         }
 
+        [Obsolete("GenerateRandomSalt is obsolete. To generate a random salt, use GenerateRandomSaltNew instead.")]
         private static byte[] GenerateRandomSalt()
         {
             using (var rng = new RNGCryptoServiceProvider())
@@ -66,5 +67,15 @@ namespace Northfield.LibraryManagementSystem.Library.Services
                 return saltBytes;
             }
         }
+        private static byte[] GenerateRandomSaltNew()
+        {
+            byte[] saltBytes = new byte[SALT_LENGTH_BYTES];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(saltBytes);
+            }
+            return saltBytes;
+        }
+
     }
 }
