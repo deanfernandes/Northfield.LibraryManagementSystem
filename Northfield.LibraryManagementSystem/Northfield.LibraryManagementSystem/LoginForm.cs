@@ -5,6 +5,8 @@ namespace Northfield.LibraryManagementSystem
 {
     public partial class LoginForm : Form
     {
+        private readonly IDataService _dataService;
+        private readonly LoginService _loginService;
         public LoginForm()
         {
             InitializeComponent();
@@ -14,6 +16,9 @@ namespace Northfield.LibraryManagementSystem
             txtUsername.Left = (ClientSize.Width - txtUsername.Width) / 2;
             txtPassword.Left = (ClientSize.Width - txtPassword.Width) / 2;
             btnLogin.Left = (ClientSize.Width - btnLogin.Width) / 2;
+
+            _dataService = new SqlDatabaseService(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
+            _loginService = new LoginService(_dataService);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -41,28 +46,20 @@ namespace Northfield.LibraryManagementSystem
             if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
             {
                 MessageBox.Show("Empty Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 return;
             }
 
-            SqlDatabaseService sqlDatabaseService = new SqlDatabaseService(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-            var admin = sqlDatabaseService.SelectAdmin(txtUsername.Text);
-
-            if (admin != null)
+            if (_loginService.Login(txtUsername.Text, txtPassword.Text) == false)
             {
-                if (PasswordService.VerifyPassword(txtPassword.Text, admin.PasswordHash, admin.Salt))
-                {
-                    Hide();
-                    new DashboardForm(this).Show();
-
-                    txtUsername.Clear();
-                    txtPassword.Clear();
-
-                    return;
-                }
+                MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Hide();
+            new DashboardForm(this).Show();
+
+            txtUsername.Clear();
+            txtPassword.Clear();
         }
     }
 }

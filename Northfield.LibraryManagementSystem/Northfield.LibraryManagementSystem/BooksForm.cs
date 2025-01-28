@@ -7,7 +7,7 @@ namespace Northfield.LibraryManagementSystem
 {
     public partial class BooksForm : Form
     {
-        SqlDatabaseService SqlDatabaseService = new SqlDatabaseService(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
+        private readonly IDataService _dataService;
 
         public BooksForm()
         {
@@ -15,6 +15,8 @@ namespace Northfield.LibraryManagementSystem
 
             //center horizontally
             lblHeader.Left = (ClientSize.Width - lblHeader.Width) / 2;
+
+            _dataService = new SqlDatabaseService(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
 
             lstBooks.DisplayMember = "DisplayMember";
 
@@ -31,7 +33,7 @@ namespace Northfield.LibraryManagementSystem
             Book book = new Book(txtIsbn.Text, txtTitle.Text, txtAuthor.Text);
             try
             {
-                SqlDatabaseService.InsertBook(book);
+                _dataService.InsertBook(book);
             }
             catch (Exception ex)
             {
@@ -59,7 +61,7 @@ namespace Northfield.LibraryManagementSystem
                 book.Title = txtTitle.Text;
                 book.Author = txtAuthor.Text;
 
-                SqlDatabaseService.UpdateBook(book);
+                _dataService.UpdateBook(book);
 
                 ResetLstBooks();
 
@@ -82,13 +84,14 @@ namespace Northfield.LibraryManagementSystem
 
             if (lstBooks.SelectedItem is Book book)
             {
-                SqlDatabaseService.DeleteBook(book.Isbn);
+                _dataService.DeleteBook(book.Isbn);
 
                 ResetLstBooks();
 
                 MessageBox.Show("Deleted book", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        
         private void lstBooks_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstBooks.SelectedItem is Book book)
@@ -150,7 +153,7 @@ namespace Northfield.LibraryManagementSystem
 
         private void ResetLstBooks()
         {
-            lstBooks.DataSource = SqlDatabaseService.SelectAllBooks();
+            lstBooks.DataSource = _dataService.SelectAllBooks();
 
             if(lstBooks.Items.Count == 0)
             {

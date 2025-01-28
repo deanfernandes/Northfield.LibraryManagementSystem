@@ -3,7 +3,7 @@ using Microsoft.Data.SqlClient;
 
 namespace Northfield.LibraryManagementSystem.Library.Services
 {
-    public class SqlDatabaseService : IDatabaseService
+    public class SqlDatabaseService : IDataService
     {
         private readonly string _connectionString;
 

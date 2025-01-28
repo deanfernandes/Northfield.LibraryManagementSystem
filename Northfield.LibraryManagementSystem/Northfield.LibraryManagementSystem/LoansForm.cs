@@ -8,7 +8,7 @@ namespace Northfield.LibraryManagementSystem
 {
     public partial class LoansForm : Form
     {
-        SqlDatabaseService SqlDatabaseService = new SqlDatabaseService(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
+        private readonly IDataService _dataService;
 
         public LoansForm()
         {
@@ -16,6 +16,8 @@ namespace Northfield.LibraryManagementSystem
 
             //center horizontally
             lblHeader.Left = (ClientSize.Width - lblHeader.Width) / 2;
+
+            _dataService = new SqlDatabaseService(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
 
             lstLoans.DisplayMember = "DisplayMember";
 
@@ -34,7 +36,7 @@ namespace Northfield.LibraryManagementSystem
             }
 
             //check if book exists
-            Book? book = SqlDatabaseService.SelectBookByIsbn(txtIsbn.Text);
+            Book? book = _dataService.SelectBookByIsbn(txtIsbn.Text);
             if (book == null)
             {
                 MessageBox.Show("Invalid Isbn", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -43,7 +45,7 @@ namespace Northfield.LibraryManagementSystem
             }
 
             //check if member exists
-            Member member = SqlDatabaseService.SelectMemberByCardNumber(txtCardNumber.Text);
+            Member member = _dataService.SelectMemberByCardNumber(txtCardNumber.Text);
             if (member == null)
             {
                 MessageBox.Show("Invalid Card Number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -52,7 +54,7 @@ namespace Northfield.LibraryManagementSystem
             }
 
             //check if already loaned
-            if (SqlDatabaseService.IsBookOnLoan(txtIsbn.Text))
+            if (_dataService.IsBookOnLoan(txtIsbn.Text))
             {
                 MessageBox.Show("Invalid Isbn (book is already loaned)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -62,7 +64,7 @@ namespace Northfield.LibraryManagementSystem
             Loan loan = new Loan(txtIsbn.Text, txtCardNumber.Text);
             try
             {
-                SqlDatabaseService.InsertLoan(loan);
+                _dataService.InsertLoan(loan);
             }
             catch (Exception ex)
             {
@@ -89,7 +91,7 @@ namespace Northfield.LibraryManagementSystem
             {
                 try
                 {
-                    SqlDatabaseService.UpdateLoanReturn(loan.LoanId);
+                    _dataService.UpdateLoanReturn(loan.LoanId);
                 }
                 catch (Exception ex)
                 {
@@ -163,7 +165,7 @@ namespace Northfield.LibraryManagementSystem
 
         private void ResetLstLoans()
         {
-            var loans = SqlDatabaseService.SelectAllLoans();
+            var loans = _dataService.SelectAllLoans();
             var notReturnedLoans = loans.Where(loan => loan.ReturnDate == null).ToList();
             lstLoans.DataSource = notReturnedLoans.ToList();
 

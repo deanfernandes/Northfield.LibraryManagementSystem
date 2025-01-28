@@ -8,7 +8,7 @@ namespace Northfield.LibraryManagementSystem
 {
     public partial class MembersForm : Form
     {
-        SqlDatabaseService SqlDatabaseService = new SqlDatabaseService(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
+        private readonly IDataService _dataService;
 
         public MembersForm()
         {
@@ -16,6 +16,8 @@ namespace Northfield.LibraryManagementSystem
 
             //center horizontally
             lblHeader.Left = (ClientSize.Width - lblHeader.Width) / 2;
+
+            _dataService = new SqlDatabaseService(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
 
             lstMembers.DisplayMember = "DisplayMember";
 
@@ -37,7 +39,7 @@ namespace Northfield.LibraryManagementSystem
             Member member = new Member(txtCardNumber.Text, txtFirstName.Text, txtLastName.Text, txtEmailAddress.Text);
             try
             {
-                SqlDatabaseService.InsertMember(member);
+                _dataService.InsertMember(member);
             }
             catch (Exception ex)
             {
@@ -66,7 +68,7 @@ namespace Northfield.LibraryManagementSystem
                 member.LastName = txtLastName.Text;
                 member.EmailAddress = txtEmailAddress.Text;
 
-                SqlDatabaseService.UpdateMember(member);
+                _dataService.UpdateMember(member);
 
                 ResetLstMembers();
 
@@ -89,7 +91,7 @@ namespace Northfield.LibraryManagementSystem
 
             if (lstMembers.SelectedItem is Member member)
             {
-                SqlDatabaseService.DeleteMember(member.CardNumber);
+                _dataService.DeleteMember(member.CardNumber);
 
                 ResetLstMembers();
 
@@ -174,7 +176,7 @@ namespace Northfield.LibraryManagementSystem
 
         private void ResetLstMembers()
         {
-            lstMembers.DataSource = SqlDatabaseService.SelectAllMembers();
+            lstMembers.DataSource = _dataService.SelectAllMembers();
 
             if (lstMembers.Items.Count == 0)
             {

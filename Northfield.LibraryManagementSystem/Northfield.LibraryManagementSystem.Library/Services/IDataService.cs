@@ -2,7 +2,7 @@
 
 namespace Northfield.LibraryManagementSystem.Library.Services
 {
-    public interface IDatabaseService
+    public interface IDataService
     {
         //Book
         public List<Book> SelectAllBooks();
