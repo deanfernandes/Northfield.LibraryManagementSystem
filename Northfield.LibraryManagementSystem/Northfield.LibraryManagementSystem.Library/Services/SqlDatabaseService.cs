@@ -1,5 +1,6 @@
 ﻿using Northfield.LibraryManagementSystem.Library.Models;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace Northfield.LibraryManagementSystem.Library.Services
 {
@@ -16,9 +17,9 @@ namespace Northfield.LibraryManagementSystem.Library.Services
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                const string query = "DELETE FROM Book WHERE Isbn = @Isbn";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new SqlCommand("DeleteBook", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@Isbn", isbn);
 
                     connection.Open();
@@ -48,18 +49,22 @@ namespace Northfield.LibraryManagementSystem.Library.Services
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                const string query = "INSERT INTO Book (Isbn, Title, Author) VALUES (@Isbn, @Title, @Author)";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new SqlCommand("InsertBook", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
+
                     command.Parameters.AddWithValue("@Isbn", book.Isbn);
                     command.Parameters.AddWithValue("@Title", book.Title);
                     command.Parameters.AddWithValue("@Author", book.Author);
 
                     connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-                    return rowsAffected > 0;
+                    command.ExecuteNonQuery();
+
+                    return true;
                 }
             }
+
+            return false;
         }
 
         public bool InsertLoan(Loan loan)
@@ -145,9 +150,10 @@ namespace Northfield.LibraryManagementSystem.Library.Services
 
             using (var connection = new SqlConnection(_connectionString))
             {
-                const string query = "SELECT Isbn, Title, Author FROM Book";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new SqlCommand("SelectAllBooks", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
+
                     connection.Open();
                     using (var reader = command.ExecuteReader())
                     {
@@ -267,18 +273,22 @@ namespace Northfield.LibraryManagementSystem.Library.Services
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                const string query = "UPDATE Book SET Title = @Title, Author = @Author WHERE Isbn = @Isbn";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new SqlCommand("UpdateBook", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
+
                     command.Parameters.AddWithValue("@Isbn", book.Isbn);
                     command.Parameters.AddWithValue("@Title", book.Title);
                     command.Parameters.AddWithValue("@Author", book.Author);
 
                     connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-                    return rowsAffected > 0;
+                    command.ExecuteNonQuery();
+                    
+                    return true;
                 }
             }
+
+            return false;
         }
 
         public bool UpdateLoanReturn(int loanId)
