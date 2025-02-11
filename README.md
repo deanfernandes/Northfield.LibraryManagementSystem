@@ -6,7 +6,7 @@ MVP Desktop application for local council library. So Libarian can manage member
 - Email validation, Regex
 - DB, SQL, ADO.NET, Stored Procedures
 - UI, WinForms
-- Test project, Unit Testing (MSTest)
+- Test project, Unit Testing (MSTest), Mocking (Moq)
 
 ![northfield library photo](docs/images/northfield%20library%20photo.jpg)
 
